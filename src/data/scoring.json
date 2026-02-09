@@ -1,0 +1,56 @@
+{
+  "weights": {
+    "transformation": 0.50,
+    "adherence": 0.35,
+    "engagement": 0.15
+  },
+  "transformation": {
+    "metrics": ["weight_change_percent", "body_fat_change", "measurements"],
+    "weight_change": {
+      "goal_cut": { "min_loss_percent": 1, "max_loss_percent": 2, "per_week": true },
+      "goal_bulk": { "min_gain_percent": 0.5, "max_gain_percent": 1, "per_week": true }
+    },
+    "before_after_photos": { "required": true, "bonus_points": 10 }
+  },
+  "adherence": {
+    "workout_completion": {
+      "weight": 0.60,
+      "scoring": {
+        "completed": 10,
+        "partial": 5,
+        "skipped": 0
+      }
+    },
+    "meal_tracking": {
+      "weight": 0.40,
+      "scoring": {
+        "on_plan": 10,
+        "within_10_percent": 7,
+        "logged_off_plan": 3,
+        "not_logged": 0
+      }
+    }
+  },
+  "engagement": {
+    "daily_check_in": { "points": 2, "max_per_day": 1 },
+    "progress_photo": { "points": 5, "max_per_week": 2 },
+    "community_post": { "points": 3, "max_per_day": 1 },
+    "encourage_others": { "points": 1, "max_per_day": 5 }
+  },
+  "prizes": {
+    "distribution": {
+      "grand_prize": 0.40,
+      "second_place": 0.25,
+      "third_place": 0.15,
+      "most_improved": 0.10,
+      "best_consistency": 0.10
+    },
+    "entry_fee": 39,
+    "platform_fee_percent": 0.20
+  },
+  "special_awards": [
+    { "name": "Most Improved", "criteria": "Largest positive delta from baseline" },
+    { "name": "Best Consistency", "criteria": "Highest adherence score regardless of transformation" },
+    { "name": "Community Champion", "criteria": "Highest engagement score" }
+  ]
+}

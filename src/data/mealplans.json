@@ -1,0 +1,147 @@
+{
+  "plans": {
+    "cut": {
+      "name": "Fat Loss",
+      "calories_multiplier": 0.8,
+      "protein_per_lb": 1.2,
+      "carbs_percent": 0.35,
+      "fat_percent": 0.25
+    },
+    "maintain": {
+      "name": "Maintenance",
+      "calories_multiplier": 1.0,
+      "protein_per_lb": 1.0,
+      "carbs_percent": 0.40,
+      "fat_percent": 0.30
+    },
+    "bulk": {
+      "name": "Muscle Gain",
+      "calories_multiplier": 1.15,
+      "protein_per_lb": 1.2,
+      "carbs_percent": 0.45,
+      "fat_percent": 0.25
+    }
+  },
+  "meals": [
+    {
+      "id": "breakfast_1",
+      "name": "Protein Oats",
+      "category": "breakfast",
+      "calories": 450,
+      "protein": 35,
+      "carbs": 55,
+      "fat": 10,
+      "ingredients": ["1 cup oats", "1 scoop whey", "1 banana", "1 tbsp almond butter"]
+    },
+    {
+      "id": "breakfast_2",
+      "name": "Egg White Scramble",
+      "category": "breakfast",
+      "calories": 350,
+      "protein": 40,
+      "carbs": 25,
+      "fat": 8,
+      "ingredients": ["6 egg whites", "2 whole eggs", "spinach", "turkey bacon", "whole wheat toast"]
+    },
+    {
+      "id": "breakfast_3",
+      "name": "Greek Yogurt Bowl",
+      "category": "breakfast",
+      "calories": 400,
+      "protein": 30,
+      "carbs": 45,
+      "fat": 12,
+      "ingredients": ["1.5 cups greek yogurt", "granola", "mixed berries", "honey drizzle"]
+    },
+    {
+      "id": "lunch_1",
+      "name": "Chicken Rice Bowl",
+      "category": "lunch",
+      "calories": 550,
+      "protein": 45,
+      "carbs": 60,
+      "fat": 12,
+      "ingredients": ["6oz grilled chicken", "1 cup brown rice", "mixed veggies", "teriyaki sauce"]
+    },
+    {
+      "id": "lunch_2",
+      "name": "Turkey Wrap",
+      "category": "lunch",
+      "calories": 480,
+      "protein": 40,
+      "carbs": 45,
+      "fat": 15,
+      "ingredients": ["whole wheat wrap", "6oz turkey", "avocado", "lettuce", "tomato", "mustard"]
+    },
+    {
+      "id": "lunch_3",
+      "name": "Salmon Salad",
+      "category": "lunch",
+      "calories": 520,
+      "protein": 42,
+      "carbs": 25,
+      "fat": 28,
+      "ingredients": ["6oz salmon", "mixed greens", "quinoa", "olive oil dressing", "cherry tomatoes"]
+    },
+    {
+      "id": "dinner_1",
+      "name": "Steak & Sweet Potato",
+      "category": "dinner",
+      "calories": 600,
+      "protein": 50,
+      "carbs": 45,
+      "fat": 22,
+      "ingredients": ["8oz sirloin", "large sweet potato", "asparagus", "butter"]
+    },
+    {
+      "id": "dinner_2",
+      "name": "Grilled Chicken & Veggies",
+      "category": "dinner",
+      "calories": 480,
+      "protein": 48,
+      "carbs": 30,
+      "fat": 16,
+      "ingredients": ["8oz chicken breast", "roasted broccoli", "bell peppers", "olive oil"]
+    },
+    {
+      "id": "dinner_3",
+      "name": "Shrimp Stir Fry",
+      "category": "dinner",
+      "calories": 450,
+      "protein": 38,
+      "carbs": 40,
+      "fat": 14,
+      "ingredients": ["8oz shrimp", "jasmine rice", "mixed vegetables", "low sodium soy sauce"]
+    },
+    {
+      "id": "snack_1",
+      "name": "Protein Shake",
+      "category": "snack",
+      "calories": 200,
+      "protein": 30,
+      "carbs": 8,
+      "fat": 4,
+      "ingredients": ["1.5 scoops whey", "water or almond milk", "ice"]
+    },
+    {
+      "id": "snack_2",
+      "name": "Apple & Almond Butter",
+      "category": "snack",
+      "calories": 250,
+      "protein": 6,
+      "carbs": 30,
+      "fat": 14,
+      "ingredients": ["1 large apple", "2 tbsp almond butter"]
+    },
+    {
+      "id": "snack_3",
+      "name": "Cottage Cheese & Fruit",
+      "category": "snack",
+      "calories": 220,
+      "protein": 24,
+      "carbs": 20,
+      "fat": 4,
+      "ingredients": ["1 cup cottage cheese", "mixed berries"]
+    }
+  ]
+}

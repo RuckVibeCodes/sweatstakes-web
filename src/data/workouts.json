@@ -1,0 +1,76 @@
+{
+  "program": {
+    "name": "SweatStakes 6-Week Challenge",
+    "duration_weeks": 6,
+    "days_per_week": 5,
+    "style": "progressive_overload"
+  },
+  "weeks": [
+    {
+      "week": 1,
+      "theme": "Foundation",
+      "days": [
+        { "day": 1, "focus": "Upper Push", "exercises": ["Bench Press 3x10", "Shoulder Press 3x10", "Tricep Dips 3x12", "Pushups 3xMax"] },
+        { "day": 2, "focus": "Lower", "exercises": ["Squats 3x10", "Leg Press 3x12", "Lunges 3x10/leg", "Calf Raises 3x15"] },
+        { "day": 3, "focus": "Upper Pull", "exercises": ["Lat Pulldowns 3x10", "Seated Rows 3x10", "Bicep Curls 3x12", "Face Pulls 3x15"] },
+        { "day": 4, "focus": "HIIT", "exercises": ["20min Circuit: Burpees, Mountain Climbers, Jump Squats, High Knees"] },
+        { "day": 5, "focus": "Full Body", "exercises": ["Deadlifts 3x8", "Pullups 3xMax", "Goblet Squats 3x12", "Plank 3x45s"] }
+      ]
+    },
+    {
+      "week": 2,
+      "theme": "Volume",
+      "days": [
+        { "day": 1, "focus": "Upper Push", "exercises": ["Bench Press 4x10", "Incline DB Press 3x12", "Shoulder Press 3x10", "Tricep Extensions 3x12"] },
+        { "day": 2, "focus": "Lower", "exercises": ["Squats 4x10", "Romanian Deadlifts 3x10", "Leg Curls 3x12", "Calf Raises 4x15"] },
+        { "day": 3, "focus": "Upper Pull", "exercises": ["Pullups 4xMax", "Bent Over Rows 3x10", "Cable Rows 3x12", "Hammer Curls 3x12"] },
+        { "day": 4, "focus": "HIIT", "exercises": ["25min Circuit: Box Jumps, Battle Ropes, KB Swings, Sprints"] },
+        { "day": 5, "focus": "Full Body", "exercises": ["Power Cleans 3x6", "Front Squats 3x10", "DB Rows 3x10", "Core Circuit 3 rounds"] }
+      ]
+    },
+    {
+      "week": 3,
+      "theme": "Intensity",
+      "days": [
+        { "day": 1, "focus": "Upper Push", "exercises": ["Bench Press 4x8 (heavier)", "Military Press 4x8", "Dips 4x10", "Cable Flyes 3x12"] },
+        { "day": 2, "focus": "Lower", "exercises": ["Squats 4x8 (heavier)", "Deadlifts 3x6", "Walking Lunges 3x12/leg", "Leg Extensions 3x15"] },
+        { "day": 3, "focus": "Upper Pull", "exercises": ["Weighted Pullups 4x6", "T-Bar Rows 4x8", "Lat Pulldowns 3x10", "Preacher Curls 3x10"] },
+        { "day": 4, "focus": "HIIT", "exercises": ["30min Tabata: 20s on/10s off, 8 exercises, 4 rounds each"] },
+        { "day": 5, "focus": "Full Body", "exercises": ["Hang Cleans 4x5", "Thrusters 3x10", "Renegade Rows 3x8/side", "Farmer Carries 3x40m"] }
+      ]
+    },
+    {
+      "week": 4,
+      "theme": "Deload",
+      "days": [
+        { "day": 1, "focus": "Upper Push", "exercises": ["Bench Press 3x8 (60%)", "Shoulder Press 3x10", "Pushups 2x15", "Stretching 10min"] },
+        { "day": 2, "focus": "Lower", "exercises": ["Squats 3x8 (60%)", "Leg Press 2x12", "Bodyweight Lunges 2x10", "Mobility Work 15min"] },
+        { "day": 3, "focus": "Upper Pull", "exercises": ["Pullups 3x8", "Light Rows 3x12", "Band Pull-Aparts 3x15", "Yoga Flow 15min"] },
+        { "day": 4, "focus": "Active Recovery", "exercises": ["30min Walk or Light Jog, Foam Rolling, Stretching"] },
+        { "day": 5, "focus": "Full Body Light", "exercises": ["Goblet Squats 2x10", "DB Press 2x10", "Light Deadlifts 2x8", "Core 2x10"] }
+      ]
+    },
+    {
+      "week": 5,
+      "theme": "Peak Performance",
+      "days": [
+        { "day": 1, "focus": "Upper Push", "exercises": ["Bench Press 5x5 (heavy)", "OHP 4x6", "Close Grip Bench 3x8", "Tricep Pushdowns 3x12"] },
+        { "day": 2, "focus": "Lower", "exercises": ["Squats 5x5 (heavy)", "Sumo Deadlifts 4x5", "Bulgarian Split Squats 3x8/leg", "Leg Press 3x12"] },
+        { "day": 3, "focus": "Upper Pull", "exercises": ["Weighted Pullups 5x5", "Pendlay Rows 4x6", "Chest Supported Rows 3x10", "Barbell Curls 4x8"] },
+        { "day": 4, "focus": "HIIT", "exercises": ["35min AMRAP: 10 Burpees, 20 KB Swings, 30 Double Unders, 40m Sprint"] },
+        { "day": 5, "focus": "Full Body", "exercises": ["Deadlifts 5x5 (heavy)", "Push Press 4x6", "Pullups 4xMax", "Loaded Carries 4x50m"] }
+      ]
+    },
+    {
+      "week": 6,
+      "theme": "Final Push",
+      "days": [
+        { "day": 1, "focus": "Upper Push", "exercises": ["Bench Press 5x5 (PR attempt)", "Incline Press 4x6", "Dips 4xMax", "Finisher: 100 Pushups"] },
+        { "day": 2, "focus": "Lower", "exercises": ["Squats 5x5 (PR attempt)", "Hip Thrusts 4x10", "Walking Lunges 4x12/leg", "Finisher: 100 Bodyweight Squats"] },
+        { "day": 3, "focus": "Upper Pull", "exercises": ["Pullups Max Test", "Rows 5x5 (heavy)", "Face Pulls 4x15", "Finisher: 100 Curls"] },
+        { "day": 4, "focus": "Final HIIT", "exercises": ["40min Challenge: Timed workout, beat Week 1 times"] },
+        { "day": 5, "focus": "Victory Lap", "exercises": ["Full body pump workout, photo-ready"] }
+      ]
+    }
+  ]
+}
