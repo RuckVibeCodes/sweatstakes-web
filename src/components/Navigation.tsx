@@ -1,8 +1,5 @@
-'use client';
-
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { useAuth } from '@/lib/auth-context';
+import { Link, useLocation } from 'react-router-dom';
+import { useAuth } from '../lib/auth-context';
 
 const navItems = [
   { href: '/dashboard', label: 'Dashboard', icon: '🏠' },
@@ -13,11 +10,11 @@ const navItems = [
 ];
 
 export function Navigation() {
-  const pathname = usePathname();
+  const location = useLocation();
   const { user, signOut, loading } = useAuth();
 
   // Don't show nav on landing page
-  if (pathname === '/') {
+  if (location.pathname === '/') {
     return null;
   }
 
@@ -27,7 +24,7 @@ export function Navigation() {
       <nav className="hidden md:flex fixed top-0 left-0 right-0 z-50 bg-neutral-950/90 backdrop-blur-sm border-b border-neutral-800">
         <div className="max-w-7xl mx-auto px-4 w-full">
           <div className="flex items-center justify-between h-16">
-            <Link href="/" className="text-xl font-bold text-green-500">
+            <Link to="/" className="text-xl font-bold text-blue-500">
               SweatStakes
             </Link>
             
@@ -35,10 +32,10 @@ export function Navigation() {
               {navItems.map((item) => (
                 <Link
                   key={item.href}
-                  href={item.href}
+                  to={item.href}
                   className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-colors ${
-                    pathname === item.href
-                      ? 'text-green-500 bg-green-500/10'
+                    location.pathname === item.href
+                      ? 'text-blue-500 bg-blue-500/10'
                       : 'text-neutral-400 hover:text-white'
                   }`}
                 >
@@ -51,7 +48,7 @@ export function Navigation() {
             <div className="flex items-center gap-4">
               {!loading && user ? (
                 <>
-                  <Link href="/progress" className="text-neutral-400 hover:text-white">
+                  <Link to="/progress" className="text-neutral-400 hover:text-white">
                     Progress
                   </Link>
                   <button
@@ -62,7 +59,7 @@ export function Navigation() {
                   </button>
                 </>
               ) : (
-                <Link href="/auth" className="btn-primary text-sm py-2">
+                <Link to="/auth" className="btn-primary text-sm py-2">
                   Sign In
                 </Link>
               )}
@@ -77,10 +74,10 @@ export function Navigation() {
           {navItems.map((item) => (
             <Link
               key={item.href}
-              href={item.href}
+              to={item.href}
               className={`flex flex-col items-center gap-1 px-3 py-2 rounded-lg transition-colors ${
-                pathname === item.href
-                  ? 'text-green-500'
+                location.pathname === item.href
+                  ? 'text-blue-500'
                   : 'text-neutral-500'
               }`}
             >

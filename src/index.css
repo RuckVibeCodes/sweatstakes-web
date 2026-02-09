@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    @apply bg-neutral-950 text-white antialiased;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-neutral-900 border border-neutral-800 rounded-xl p-6;
+  }
+  
+  .btn-primary {
+    @apply bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors inline-block text-center;
+  }
+  
+  .btn-secondary {
+    @apply bg-neutral-800 hover:bg-neutral-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors border border-neutral-700 inline-block text-center;
+  }
+  
+  .input {
+    @apply w-full bg-neutral-800 border border-neutral-700 rounded-lg px-4 py-3 text-white placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent;
+  }
+  
+  .label {
+    @apply block text-sm font-medium text-neutral-300 mb-2;
+  }
+}
+
+.safe-area-pb {
+  padding-bottom: env(safe-area-inset-bottom);
+}

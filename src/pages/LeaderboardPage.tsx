@@ -1,10 +1,8 @@
-'use client';
-
 import { useEffect, useState } from 'react';
-import Link from 'next/link';
-import { useAuth } from '@/lib/auth-context';
-import { createClient } from '@/lib/supabase';
-import { LeaderboardEntry } from '@/types';
+import { Link } from 'react-router-dom';
+import { useAuth } from '../lib/auth-context';
+import { createClient } from '../lib/supabase';
+import type { LeaderboardEntry } from '../types';
 
 // Mock data for demo purposes - in production this comes from the database
 const mockLeaderboard: LeaderboardEntry[] = [
@@ -94,10 +92,10 @@ export default function LeaderboardPage() {
       </div>
 
       {/* Prize Pool Banner */}
-      <div className="card bg-gradient-to-r from-green-900/30 to-green-800/20 border-green-700/50 mb-8">
+      <div className="card bg-gradient-to-r from-blue-900/30 to-blue-800/20 border-blue-700/50 mb-8">
         <div className="text-center">
-          <div className="text-sm text-green-400 mb-1">Current Prize Pool</div>
-          <div className="text-4xl font-bold text-green-500">$1,248</div>
+          <div className="text-sm text-blue-400 mb-1">Current Prize Pool</div>
+          <div className="text-4xl font-bold text-blue-500">$1,248</div>
           <div className="text-sm text-neutral-400 mt-2">32 participants • Challenge ends in 21 days</div>
         </div>
       </div>
@@ -115,7 +113,7 @@ export default function LeaderboardPage() {
             onClick={() => setActiveTab(tab.key as typeof activeTab)}
             className={`flex items-center gap-2 px-4 py-2 rounded-lg whitespace-nowrap transition-colors ${
               activeTab === tab.key
-                ? 'bg-green-500/20 text-green-500 border border-green-500/50'
+                ? 'bg-blue-500/20 text-blue-500 border border-blue-500/50'
                 : 'bg-neutral-800 text-neutral-400 border border-neutral-700 hover:border-neutral-600'
             }`}
           >
@@ -131,7 +129,7 @@ export default function LeaderboardPage() {
         <div className="card text-center mt-8">
           <div className="text-3xl mb-2">🥈</div>
           <div className="font-semibold">{sortedLeaderboard[1]?.user_name}</div>
-          <div className="text-2xl font-bold text-green-500">{getScoreForTab(sortedLeaderboard[1])}</div>
+          <div className="text-2xl font-bold text-blue-500">{getScoreForTab(sortedLeaderboard[1])}</div>
           <div className="text-sm text-neutral-400">{sortedLeaderboard[1]?.weight_change_percent}%</div>
         </div>
         
@@ -139,7 +137,7 @@ export default function LeaderboardPage() {
         <div className="card text-center bg-gradient-to-b from-yellow-900/20 to-transparent border-yellow-600/30">
           <div className="text-4xl mb-2">🥇</div>
           <div className="font-semibold text-lg">{sortedLeaderboard[0]?.user_name}</div>
-          <div className="text-3xl font-bold text-green-500">{getScoreForTab(sortedLeaderboard[0])}</div>
+          <div className="text-3xl font-bold text-blue-500">{getScoreForTab(sortedLeaderboard[0])}</div>
           <div className="text-sm text-neutral-400">{sortedLeaderboard[0]?.weight_change_percent}%</div>
         </div>
         
@@ -147,7 +145,7 @@ export default function LeaderboardPage() {
         <div className="card text-center mt-8">
           <div className="text-3xl mb-2">🥉</div>
           <div className="font-semibold">{sortedLeaderboard[2]?.user_name}</div>
-          <div className="text-2xl font-bold text-green-500">{getScoreForTab(sortedLeaderboard[2])}</div>
+          <div className="text-2xl font-bold text-blue-500">{getScoreForTab(sortedLeaderboard[2])}</div>
           <div className="text-sm text-neutral-400">{sortedLeaderboard[2]?.weight_change_percent}%</div>
         </div>
       </div>
@@ -164,7 +162,7 @@ export default function LeaderboardPage() {
                 key={entry.user_id}
                 className={`flex items-center justify-between p-4 rounded-lg transition-colors ${
                   isCurrentUser
-                    ? 'bg-green-500/20 border border-green-500/50'
+                    ? 'bg-blue-500/20 border border-blue-500/50'
                     : 'bg-neutral-800/50 hover:bg-neutral-800'
                 }`}
               >
@@ -175,7 +173,7 @@ export default function LeaderboardPage() {
                   <div>
                     <div className="font-semibold">
                       {entry.user_name}
-                      {isCurrentUser && <span className="text-green-500 ml-2">(You)</span>}
+                      {isCurrentUser && <span className="text-blue-500 ml-2">(You)</span>}
                     </div>
                     <div className="text-sm text-neutral-400">
                       Weight: {entry.weight_change_percent > 0 ? '+' : ''}{entry.weight_change_percent}%
@@ -184,7 +182,7 @@ export default function LeaderboardPage() {
                 </div>
                 
                 <div className="text-right">
-                  <div className="text-xl font-bold text-green-500">{getScoreForTab(entry)}</div>
+                  <div className="text-xl font-bold text-blue-500">{getScoreForTab(entry)}</div>
                   <div className="text-xs text-neutral-400">points</div>
                 </div>
               </div>
@@ -197,8 +195,8 @@ export default function LeaderboardPage() {
       {user && !sortedLeaderboard.find(e => e.user_id === user.id) && (
         <div className="card mt-6 bg-neutral-800/50">
           <div className="text-center py-4">
-            <p className="text-neutral-400 mb-2">You haven&apos;t joined the challenge yet</p>
-            <Link href="/auth?mode=signup" className="btn-primary">
+            <p className="text-neutral-400 mb-2">You haven't joined the challenge yet</p>
+            <Link to="/auth?mode=signup" className="btn-primary">
               Join Now
             </Link>
           </div>

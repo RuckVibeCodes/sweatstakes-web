@@ -1,13 +1,10 @@
-'use client';
-
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import Link from 'next/link';
-import { useAuth } from '@/lib/auth-context';
-import { createClient } from '@/lib/supabase';
+import { useNavigate, Link } from 'react-router-dom';
+import { useAuth } from '../lib/auth-context';
+import { createClient } from '../lib/supabase';
 
 export default function CheckInPage() {
-  const router = useRouter();
+  const navigate = useNavigate();
   const { user, loading } = useAuth();
   
   const [weight, setWeight] = useState('');
@@ -69,7 +66,7 @@ export default function CheckInPage() {
       });
 
       if (error) throw error;
-      router.push('/dashboard');
+      navigate('/dashboard');
     } catch (error) {
       console.error('Failed to submit check-in:', error);
       alert('Failed to submit check-in. Please try again.');
@@ -91,7 +88,7 @@ export default function CheckInPage() {
       <div className="min-h-screen flex items-center justify-center px-4">
         <div className="text-center">
           <h1 className="text-2xl font-bold mb-4">Sign in to check in</h1>
-          <Link href="/auth" className="btn-primary">
+          <Link to="/auth" className="btn-primary">
             Sign In
           </Link>
         </div>
@@ -130,7 +127,7 @@ export default function CheckInPage() {
 
         {/* Daily Tasks */}
         <div className="card">
-          <h2 className="text-lg font-semibold mb-4">Today&apos;s Tasks</h2>
+          <h2 className="text-lg font-semibold mb-4">Today's Tasks</h2>
           
           <div className="space-y-4">
             <button
@@ -138,12 +135,12 @@ export default function CheckInPage() {
               onClick={() => setWorkoutCompleted(!workoutCompleted)}
               className={`w-full flex items-center gap-4 p-4 rounded-lg border transition-all ${
                 workoutCompleted
-                  ? 'bg-green-500/20 border-green-500/50'
+                  ? 'bg-blue-500/20 border-blue-500/50'
                   : 'bg-neutral-800/50 border-neutral-700'
               }`}
             >
               <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${
-                workoutCompleted ? 'border-green-500 bg-green-500' : 'border-neutral-500'
+                workoutCompleted ? 'border-blue-500 bg-blue-500' : 'border-neutral-500'
               }`}>
                 {workoutCompleted && (
                   <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -162,12 +159,12 @@ export default function CheckInPage() {
               onClick={() => setMealsLogged(!mealsLogged)}
               className={`w-full flex items-center gap-4 p-4 rounded-lg border transition-all ${
                 mealsLogged
-                  ? 'bg-green-500/20 border-green-500/50'
+                  ? 'bg-blue-500/20 border-blue-500/50'
                   : 'bg-neutral-800/50 border-neutral-700'
               }`}
             >
               <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${
-                mealsLogged ? 'border-green-500 bg-green-500' : 'border-neutral-500'
+                mealsLogged ? 'border-blue-500 bg-blue-500' : 'border-neutral-500'
               }`}>
                 {mealsLogged && (
                   <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -194,7 +191,7 @@ export default function CheckInPage() {
                 onClick={() => setMood(index + 1)}
                 className={`flex-1 py-4 text-2xl rounded-lg border transition-all ${
                   mood === index + 1
-                    ? 'bg-green-500/20 border-green-500'
+                    ? 'bg-blue-500/20 border-blue-500'
                     : 'bg-neutral-800 border-neutral-700 hover:border-neutral-600'
                 }`}
               >
@@ -218,8 +215,8 @@ export default function CheckInPage() {
             <label htmlFor="photo-upload" className="cursor-pointer">
               {photo ? (
                 <div>
-                  <div className="text-green-500 mb-2">📸</div>
-                  <div className="text-green-500">{photo.name}</div>
+                  <div className="text-blue-500 mb-2">📸</div>
+                  <div className="text-blue-500">{photo.name}</div>
                   <div className="text-sm text-neutral-400 mt-1">Click to change</div>
                 </div>
               ) : (

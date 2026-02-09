@@ -1,15 +1,12 @@
-'use client';
-
 import { useState } from 'react';
-import { useParams, useRouter } from 'next/navigation';
-import Link from 'next/link';
-import { useAuth } from '@/lib/auth-context';
-import { createClient } from '@/lib/supabase';
-import workoutsData from '@/data/workouts.json';
+import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useAuth } from '../lib/auth-context';
+import { createClient } from '../lib/supabase';
+import workoutsData from '../data/workouts.json';
 
 export default function WorkoutDetailPage() {
   const params = useParams();
-  const router = useRouter();
+  const navigate = useNavigate();
   const { user } = useAuth();
   
   const week = parseInt(params.week as string);
@@ -28,7 +25,7 @@ export default function WorkoutDetailPage() {
       <div className="max-w-7xl mx-auto px-4 py-8">
         <div className="text-center">
           <h1 className="text-2xl font-bold mb-4">Workout Not Found</h1>
-          <Link href="/workouts" className="btn-secondary">
+          <Link to="/workouts" className="btn-secondary">
             Back to Workouts
           </Link>
         </div>
@@ -48,7 +45,7 @@ export default function WorkoutDetailPage() {
 
   const handleLogWorkout = async () => {
     if (!user) {
-      router.push('/auth');
+      navigate('/auth');
       return;
     }
 
@@ -71,7 +68,7 @@ export default function WorkoutDetailPage() {
       });
 
       if (error) throw error;
-      router.push('/dashboard');
+      navigate('/dashboard');
     } catch (error) {
       console.error('Failed to log workout:', error);
       alert('Failed to log workout. Please try again.');
@@ -86,7 +83,7 @@ export default function WorkoutDetailPage() {
     <div className="max-w-3xl mx-auto px-4 py-8">
       {/* Header */}
       <div className="mb-8">
-        <Link href="/workouts" className="text-green-500 hover:underline text-sm mb-2 inline-block">
+        <Link to="/workouts" className="text-blue-500 hover:underline text-sm mb-2 inline-block">
           ← Back to Workouts
         </Link>
         <div className="flex items-center gap-4">
@@ -107,13 +104,13 @@ export default function WorkoutDetailPage() {
               onClick={() => toggleExercise(index)}
               className={`w-full flex items-center gap-4 p-4 rounded-lg border transition-all ${
                 completedExercises.has(index)
-                  ? 'bg-green-500/20 border-green-500/50'
+                  ? 'bg-blue-500/20 border-blue-500/50'
                   : 'bg-neutral-800/50 border-neutral-700 hover:border-neutral-600'
               }`}
             >
               <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${
                 completedExercises.has(index)
-                  ? 'border-green-500 bg-green-500'
+                  ? 'border-blue-500 bg-blue-500'
                   : 'border-neutral-500'
               }`}>
                 {completedExercises.has(index) && (
@@ -122,7 +119,7 @@ export default function WorkoutDetailPage() {
                   </svg>
                 )}
               </div>
-              <span className={completedExercises.has(index) ? 'text-green-400' : 'text-neutral-200'}>
+              <span className={completedExercises.has(index) ? 'text-blue-400' : 'text-neutral-200'}>
                 {exercise}
               </span>
             </button>
@@ -160,7 +157,7 @@ export default function WorkoutDetailPage() {
                   onClick={() => setEffort(level)}
                   className={`flex-1 py-3 rounded-lg border transition-colors ${
                     effort === level
-                      ? 'bg-green-500/20 border-green-500 text-green-500'
+                      ? 'bg-blue-500/20 border-blue-500 text-blue-500'
                       : 'bg-neutral-800 border-neutral-700 hover:border-neutral-600'
                   }`}
                 >
@@ -182,7 +179,7 @@ export default function WorkoutDetailPage() {
         disabled={isLogging || completedExercises.size === 0}
         className={`w-full py-4 rounded-lg font-semibold text-lg transition-colors ${
           allCompleted
-            ? 'bg-green-500 hover:bg-green-600 text-white'
+            ? 'bg-blue-500 hover:bg-blue-600 text-white'
             : 'bg-neutral-700 hover:bg-neutral-600 text-white'
         } disabled:opacity-50 disabled:cursor-not-allowed`}
       >
@@ -192,11 +189,11 @@ export default function WorkoutDetailPage() {
       {/* Navigation */}
       <div className="flex justify-between mt-6">
         {day > 1 ? (
-          <Link href={`/workouts/${week}/${day - 1}`} className="text-green-500 hover:underline">
+          <Link to={`/workouts/${week}/${day - 1}`} className="text-blue-500 hover:underline">
             ← Previous Day
           </Link>
         ) : week > 1 ? (
-          <Link href={`/workouts/${week - 1}/5`} className="text-green-500 hover:underline">
+          <Link to={`/workouts/${week - 1}/5`} className="text-blue-500 hover:underline">
             ← Week {week - 1}
           </Link>
         ) : (
@@ -204,11 +201,11 @@ export default function WorkoutDetailPage() {
         )}
         
         {day < 5 ? (
-          <Link href={`/workouts/${week}/${day + 1}`} className="text-green-500 hover:underline">
+          <Link to={`/workouts/${week}/${day + 1}`} className="text-blue-500 hover:underline">
             Next Day →
           </Link>
         ) : week < 6 ? (
-          <Link href={`/workouts/${week + 1}/1`} className="text-green-500 hover:underline">
+          <Link to={`/workouts/${week + 1}/1`} className="text-blue-500 hover:underline">
             Week {week + 1} →
           </Link>
         ) : (

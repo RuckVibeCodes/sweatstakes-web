@@ -1,5 +1,5 @@
 import scoringConfig from '../data/scoring.json';
-import { DailyCheckIn, WorkoutLog, ScoreSummary } from '../types';
+import type { DailyCheckIn, WorkoutLog, ScoreSummary } from '../types';
 
 export function calculateTransformationScore(
   startWeight: number,

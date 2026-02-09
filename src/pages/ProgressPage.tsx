@@ -1,11 +1,8 @@
-'use client';
-
 import { useEffect, useState, useCallback } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import { useAuth } from '@/lib/auth-context';
-import { createClient } from '@/lib/supabase';
-import { DailyCheckIn } from '@/types';
+import { Link } from 'react-router-dom';
+import { useAuth } from '../lib/auth-context';
+import { createClient } from '../lib/supabase';
+import type { DailyCheckIn } from '../types';
 
 export default function ProgressPage() {
   const { user, loading } = useAuth();
@@ -66,7 +63,7 @@ export default function ProgressPage() {
       <div className="min-h-screen flex items-center justify-center px-4">
         <div className="text-center">
           <h1 className="text-2xl font-bold mb-4">Sign in to view progress</h1>
-          <Link href="/auth" className="btn-primary">
+          <Link to="/auth" className="btn-primary">
             Sign In
           </Link>
         </div>
@@ -95,13 +92,13 @@ export default function ProgressPage() {
         </div>
         <div className="card">
           <div className="text-sm text-neutral-400 mb-1">Weight Change</div>
-          <div className={`text-2xl font-bold ${stats.weightChange < 0 ? 'text-green-500' : stats.weightChange > 0 ? 'text-red-500' : ''}`}>
+          <div className={`text-2xl font-bold ${stats.weightChange < 0 ? 'text-blue-500' : stats.weightChange > 0 ? 'text-red-500' : ''}`}>
             {stats.weightChange > 0 ? '+' : ''}{stats.weightChange.toFixed(1)} lbs
           </div>
         </div>
         <div className="card">
           <div className="text-sm text-neutral-400 mb-1">Check-ins</div>
-          <div className="text-2xl font-bold text-green-500">{stats.totalCheckIns}</div>
+          <div className="text-2xl font-bold text-blue-500">{stats.totalCheckIns}</div>
         </div>
       </div>
 
@@ -139,7 +136,7 @@ export default function ProgressPage() {
               return (
                 <div
                   key={checkIn.id}
-                  className="flex-1 bg-green-500/20 hover:bg-green-500/40 rounded-t transition-colors"
+                  className="flex-1 bg-blue-500/20 hover:bg-blue-500/40 rounded-t transition-colors"
                   style={{ height: `${Math.max(height, 10)}%` }}
                   title={`${checkIn.date}: ${checkIn.weight} lbs`}
                 />
@@ -161,12 +158,10 @@ export default function ProgressPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {photosWithUrls.map((checkIn) => (
               <div key={checkIn.id} className="relative">
-                <Image
+                <img
                   src={checkIn.photo_url!}
                   alt={`Progress photo from ${checkIn.date}`}
                   className="w-full aspect-square object-cover rounded-lg"
-                  width={200}
-                  height={200}
                 />
                 <div className="absolute bottom-2 left-2 bg-black/70 px-2 py-1 rounded text-xs">
                   {new Date(checkIn.date).toLocaleDateString()}
@@ -178,7 +173,7 @@ export default function ProgressPage() {
           <div className="text-center py-12">
             <div className="text-4xl mb-4">📷</div>
             <p className="text-neutral-400 mb-4">No progress photos yet</p>
-            <Link href="/check-in" className="btn-primary">
+            <Link to="/check-in" className="btn-primary">
               Upload Your First Photo
             </Link>
           </div>
@@ -206,9 +201,9 @@ export default function ProgressPage() {
                   </div>
                 </div>
                 <div className="flex gap-2">
-                  {checkIn.workout_completed && <span className="text-green-500">💪</span>}
-                  {checkIn.meals_logged && <span className="text-green-500">🍽️</span>}
-                  {checkIn.photo_url && <span className="text-green-500">📸</span>}
+                  {checkIn.workout_completed && <span className="text-blue-500">💪</span>}
+                  {checkIn.meals_logged && <span className="text-blue-500">🍽️</span>}
+                  {checkIn.photo_url && <span className="text-blue-500">📸</span>}
                 </div>
               </div>
             ))}

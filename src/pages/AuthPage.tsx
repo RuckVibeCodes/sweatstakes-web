@@ -1,13 +1,10 @@
-'use client';
+import { useState, useEffect } from 'react';
+import { useNavigate, useSearchParams, Link } from 'react-router-dom';
+import { useAuth } from '../lib/auth-context';
 
-import { useState, useEffect, Suspense } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
-import Link from 'next/link';
-import { useAuth } from '@/lib/auth-context';
-
-function AuthContent() {
-  const router = useRouter();
-  const searchParams = useSearchParams();
+export default function AuthPage() {
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const { signIn, signUp, user, loading } = useAuth();
   
   const [mode, setMode] = useState<'signin' | 'signup'>('signin');
@@ -24,9 +21,9 @@ function AuthContent() {
 
   useEffect(() => {
     if (!loading && user) {
-      router.push('/dashboard');
+      navigate('/dashboard');
     }
-  }, [user, loading, router]);
+  }, [user, loading, navigate]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -42,7 +39,7 @@ function AuthContent() {
       } else {
         const { error } = await signIn(email, password);
         if (error) throw error;
-        router.push('/dashboard');
+        navigate('/dashboard');
       }
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An error occurred');
@@ -63,7 +60,7 @@ function AuthContent() {
     <div className="min-h-screen flex items-center justify-center px-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <Link href="/" className="text-3xl font-bold text-green-500">
+          <Link to="/" className="text-3xl font-bold text-blue-500">
             SweatStakes
           </Link>
           <p className="text-neutral-400 mt-2">
@@ -77,7 +74,7 @@ function AuthContent() {
               onClick={() => setMode('signin')}
               className={`flex-1 py-2 text-center rounded-lg transition-colors ${
                 mode === 'signin'
-                  ? 'bg-green-500/20 text-green-500'
+                  ? 'bg-blue-500/20 text-blue-500'
                   : 'text-neutral-400 hover:text-white'
               }`}
             >
@@ -87,7 +84,7 @@ function AuthContent() {
               onClick={() => setMode('signup')}
               className={`flex-1 py-2 text-center rounded-lg transition-colors ${
                 mode === 'signup'
-                  ? 'bg-green-500/20 text-green-500'
+                  ? 'bg-blue-500/20 text-blue-500'
                   : 'text-neutral-400 hover:text-white'
               }`}
             >
@@ -138,7 +135,7 @@ function AuthContent() {
             {error && (
               <div className={`p-3 rounded-lg text-sm ${
                 error.includes('Check your email') 
-                  ? 'bg-green-500/20 text-green-400' 
+                  ? 'bg-blue-500/20 text-blue-400' 
                   : 'bg-red-500/20 text-red-400'
               }`}>
                 {error}
@@ -157,24 +154,12 @@ function AuthContent() {
 
         <p className="text-center text-neutral-500 mt-4 text-sm">
           {mode === 'signup' ? (
-            <>Already have an account? <button onClick={() => setMode('signin')} className="text-green-500 hover:underline">Sign in</button></>
+            <>Already have an account? <button onClick={() => setMode('signin')} className="text-blue-500 hover:underline">Sign in</button></>
           ) : (
-            <>Don&apos;t have an account? <button onClick={() => setMode('signup')} className="text-green-500 hover:underline">Sign up</button></>
+            <>Don't have an account? <button onClick={() => setMode('signup')} className="text-blue-500 hover:underline">Sign up</button></>
           )}
         </p>
       </div>
     </div>
-  );
-}
-
-export default function AuthPage() {
-  return (
-    <Suspense fallback={
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-neutral-400">Loading...</div>
-      </div>
-    }>
-      <AuthContent />
-    </Suspense>
   );
 }
